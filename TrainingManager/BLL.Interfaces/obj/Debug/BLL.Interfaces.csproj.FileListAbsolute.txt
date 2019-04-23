@@ -1,0 +1,6 @@
+C:\Users\User-PC\source\repos\TrainingManager\BLL.Interfaces\bin\Debug\BLL.Interfaces.dll
+C:\Users\User-PC\source\repos\TrainingManager\BLL.Interfaces\bin\Debug\BLL.Interfaces.pdb
+C:\Users\User-PC\source\repos\TrainingManager\BLL.Interfaces\obj\Debug\BLL.Interfaces.csprojAssemblyReference.cache
+C:\Users\User-PC\source\repos\TrainingManager\BLL.Interfaces\obj\Debug\BLL.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\User-PC\source\repos\TrainingManager\BLL.Interfaces\obj\Debug\BLL.Interfaces.dll
+C:\Users\User-PC\source\repos\TrainingManager\BLL.Interfaces\obj\Debug\BLL.Interfaces.pdb

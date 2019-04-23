@@ -1,0 +1,6 @@
+C:\Users\User-PC\source\repos\TrainingManager\BLL\bin\Debug\BLL.dll
+C:\Users\User-PC\source\repos\TrainingManager\BLL\bin\Debug\BLL.pdb
+C:\Users\User-PC\source\repos\TrainingManager\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\User-PC\source\repos\TrainingManager\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\User-PC\source\repos\TrainingManager\BLL\obj\Debug\BLL.dll
+C:\Users\User-PC\source\repos\TrainingManager\BLL\obj\Debug\BLL.pdb

@@ -1,0 +1,6 @@
+C:\Users\User-PC\source\repos\TrainingManager\DAL.Interfaces\bin\Debug\DAL.Interfaces.dll
+C:\Users\User-PC\source\repos\TrainingManager\DAL.Interfaces\bin\Debug\DAL.Interfaces.pdb
+C:\Users\User-PC\source\repos\TrainingManager\DAL.Interfaces\obj\Debug\DAL.Interfaces.csprojAssemblyReference.cache
+C:\Users\User-PC\source\repos\TrainingManager\DAL.Interfaces\obj\Debug\DAL.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\User-PC\source\repos\TrainingManager\DAL.Interfaces\obj\Debug\DAL.Interfaces.dll
+C:\Users\User-PC\source\repos\TrainingManager\DAL.Interfaces\obj\Debug\DAL.Interfaces.pdb
