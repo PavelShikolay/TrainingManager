@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ORM.Entities
+﻿namespace ORM.Entities
 {
     public class Attendance
     {
