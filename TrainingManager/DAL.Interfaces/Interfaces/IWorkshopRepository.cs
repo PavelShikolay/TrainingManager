@@ -2,7 +2,7 @@
 
 namespace DAL.Interfaces.Interfaces
 {
-    public interface IWorkshopInterface
+    public interface IWorkshopRepository
     {
         /// <summary>
         /// Adds new workshop

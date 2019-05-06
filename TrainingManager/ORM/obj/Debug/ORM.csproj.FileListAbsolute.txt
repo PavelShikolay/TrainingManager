@@ -10,3 +10,15 @@ C:\Users\User-PC\source\repos\TrainingManager\ORM\bin\Debug\EntityFramework.xml
 C:\Users\User-PC\source\repos\TrainingManager\ORM\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\User-PC\source\repos\TrainingManager\ORM\obj\Debug\ORM.csprojAssemblyReference.cache
 C:\Users\User-PC\source\repos\TrainingManager\ORM\obj\Debug\ORM.csproj.CopyComplete
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\bin\Debug\ORM.dll.config
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\bin\Debug\ORM.dll
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\bin\Debug\ORM.pdb
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\bin\Debug\EntityFramework.dll
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\bin\Debug\EntityFramework.SqlServer.dll
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\bin\Debug\EntityFramework.xml
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\bin\Debug\EntityFramework.SqlServer.xml
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\obj\Debug\ORM.csprojAssemblyReference.cache
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\obj\Debug\ORM.csproj.CoreCompileInputs.cache
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\obj\Debug\ORM.csproj.CopyComplete
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\obj\Debug\ORM.dll
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\ORM\obj\Debug\ORM.pdb

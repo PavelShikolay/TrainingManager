@@ -3,3 +3,7 @@ C:\Users\User-PC\source\repos\TrainingManager\DAL\bin\Debug\DAL.pdb
 C:\Users\User-PC\source\repos\TrainingManager\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\User-PC\source\repos\TrainingManager\DAL\obj\Debug\DAL.dll
 C:\Users\User-PC\source\repos\TrainingManager\DAL\obj\Debug\DAL.pdb
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\DAL\obj\Debug\DAL.dll
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\DAL\obj\Debug\DAL.pdb

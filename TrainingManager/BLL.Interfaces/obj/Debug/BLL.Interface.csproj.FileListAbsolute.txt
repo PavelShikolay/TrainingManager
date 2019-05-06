@@ -1,0 +1,6 @@
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\BLL.Interfaces\bin\Debug\BLL.Interfaces.dll
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\BLL.Interfaces\bin\Debug\BLL.Interfaces.pdb
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\BLL.Interfaces\obj\Debug\BLL.Interface.csprojAssemblyReference.cache
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\BLL.Interfaces\obj\Debug\BLL.Interface.csproj.CoreCompileInputs.cache
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\BLL.Interfaces\obj\Debug\BLL.Interfaces.dll
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\BLL.Interfaces\obj\Debug\BLL.Interfaces.pdb

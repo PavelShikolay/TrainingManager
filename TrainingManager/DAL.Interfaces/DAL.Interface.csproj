@@ -48,7 +48,7 @@
     <Compile Include="Interfaces\IModuleRepository.cs" />
     <Compile Include="Interfaces\IStudentModuleRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
-    <Compile Include="Interfaces\IWorkshopInterface.cs" />
+    <Compile Include="Interfaces\IWorkshopRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

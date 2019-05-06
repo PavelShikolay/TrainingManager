@@ -1,0 +1,6 @@
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\DAL.Interfaces\bin\Debug\DAL.Interfaces.dll
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\DAL.Interfaces\bin\Debug\DAL.Interfaces.pdb
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\DAL.Interfaces\obj\Debug\DAL.Interface.csprojAssemblyReference.cache
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\DAL.Interfaces\obj\Debug\DAL.Interface.csproj.CoreCompileInputs.cache
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\DAL.Interfaces\obj\Debug\DAL.Interfaces.dll
+G:\Универ\Книги\3 курс\Курсовая работа\TrainingManager\DAL.Interfaces\obj\Debug\DAL.Interfaces.pdb
