@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\AttendanceConfiguration.cs" />
+    <Compile Include="Configurations\GroupConfiguration.cs" />
     <Compile Include="Configurations\ModuleConfiguration.cs" />
     <Compile Include="Configurations\RoleConfiguration.cs" />
     <Compile Include="Configurations\StudentModuleConfiguration.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Configurations\WorkshopConfiguration.cs" />
     <Compile Include="Context\AppDbContext.cs" />
     <Compile Include="Entities\Attendance.cs" />
+    <Compile Include="Entities\Group.cs" />
     <Compile Include="Entities\Module.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\StudentModule.cs" />

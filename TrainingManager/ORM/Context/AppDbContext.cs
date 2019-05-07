@@ -13,6 +13,7 @@ namespace ORM.Context
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Group> Groups { get; set; }
         public DbSet<Module> Modules { get; set; }
         public DbSet<StudentModule> StudentModules { get; set; }
         public DbSet<Workshop> Workshops { get; set; }
@@ -25,6 +26,7 @@ namespace ORM.Context
             modelBuilder.Configurations.Add(new AttendanceConfiguration());
             modelBuilder.Configurations.Add(new ModuleConfiguration());
             modelBuilder.Configurations.Add(new RoleConfiguration());
+            modelBuilder.Configurations.Add(new GroupConfiguration());
             modelBuilder.Configurations.Add(new StudentModuleConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new WorkshopConfiguration());
@@ -33,6 +35,11 @@ namespace ORM.Context
                         .HasRequired<Role>(u => u.Role)
                         .WithMany(r => r.Users)
                         .HasForeignKey<int>(u => u.RoleId);
+
+            modelBuilder.Entity<User>()
+                        .HasRequired<Group>(u => u.Group)
+                        .WithMany(g => g.Users)
+                        .HasForeignKey<int>(u => u.GroupId);
 
             modelBuilder.Entity<StudentModule>()
                         .HasRequired<User>(sm => sm.User)

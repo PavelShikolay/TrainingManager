@@ -6,6 +6,7 @@ namespace ORM.Entities
     {
         public int Id { get; set; }
         public int RoleId { get; set; }
+        public int GroupId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Patronymic { get; set; }
@@ -15,6 +16,7 @@ namespace ORM.Entities
 
         public virtual ICollection<Attendance> Attendances { get; set; }
         public virtual ICollection<StudentModule> StudentModules { get; set; }
-        public virtual Role Role { get; set; } 
+        public virtual Role Role { get; set; }
+        public virtual Group Group { get; set; }
     }
 }
