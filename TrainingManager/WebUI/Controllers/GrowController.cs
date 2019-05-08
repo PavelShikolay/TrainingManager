@@ -94,6 +94,17 @@ namespace WebUI.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("studentModules/{moduleId:int}")]
+        [SwaggerResponse(HttpStatusCode.Created, Description = "Creates a student module instance of module for all students.")]
+        [SwaggerResponse(HttpStatusCode.BadRequest)]
+        [SwaggerResponse(HttpStatusCode.Conflict)]
+        [SwaggerResponse(HttpStatusCode.InternalServerError)]
+        public async Task<IHttpActionResult> AddStudentModules([FromUri] int moduleId)
+        {
+            return Ok();
+        }
+
         [HttpPut]
         [Route("studentModules/{moduleId:int}")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Updates an existed student module.")]

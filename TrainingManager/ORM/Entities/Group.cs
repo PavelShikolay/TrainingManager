@@ -12,5 +12,6 @@ namespace ORM.Entities
         public int Name { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Module> Modules { get; set; }
     }
 }
