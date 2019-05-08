@@ -12,6 +12,10 @@ using Swashbuckle.Swagger.Annotations;
 
 namespace WebUI.Controllers
 {
+    [ApiVersion("1.0")]
+    [RoutePrefix("api/groups")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [SwaggerResponseRemoveDefaults]
     public class GroupsController : ApiController
     {
         public GroupsController()
@@ -19,7 +23,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        [Route("groups/")]
+        [Route("")]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of groups.", Type = typeof(Group[]))]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetGroups()
@@ -28,7 +32,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        [Route("groups/")]
+        [Route("")]
         [SwaggerResponse(HttpStatusCode.Created, Description = "Creates a new group.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
@@ -39,7 +43,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPut]
-        [Route("groups/{groupId:int}")]
+        [Route("{groupId:int}")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Updates an existed group.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
@@ -51,7 +55,7 @@ namespace WebUI.Controllers
         }
 
         [HttpDelete]
-        [Route("groups/{groupId:int:min(1)}")]
+        [Route("{groupId:int:min(1)}")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Deletes an existed group.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
@@ -63,7 +67,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        [Route("groups/{groupId:int}/students")]
+        [Route("{groupId:int}/students")]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of students.", Type = typeof(User[]))]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetStudents([FromUri] int groupId)
@@ -72,7 +76,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        [Route("groups/{groupId:int}/students/")]
+        [Route("{groupId:int}/students/")]
         [SwaggerResponse(HttpStatusCode.Created, Description = "Creates a new student.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
@@ -83,7 +87,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPut]
-        [Route("groups/{groupId:int}/students/{studentId:int}")]
+        [Route("{groupId:int}/students/{studentId:int}")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Updates an existed student.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
@@ -95,7 +99,7 @@ namespace WebUI.Controllers
         }
 
         [HttpDelete]
-        [Route("groups/{groupId:int}/students/{studentId:int}")]
+        [Route("{groupId:int}/students/{studentId:int}")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Deletes an existed student.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
@@ -107,7 +111,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        [Route("groups/attendance/")]
+        [Route("attendance/")]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a attendance of a group on workshop.", Type = typeof(bool[]))]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetAttendance([FromBody] int workshopId)
@@ -116,7 +120,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPut]
-        [Route("groups/attendance/")]
+        [Route("attendance/")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Updates an existed attendance of student on workshop.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
