@@ -23,7 +23,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        [Route("modules")]
+        [Route("modules/")]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of modules.", Type = typeof(Module[]))]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetModules()
@@ -32,7 +32,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        [Route("{moduleId:int:min(1)}")]
+        [Route("modules/{moduleId:int:min(1)}")]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a module.", Type = typeof(Module))]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
@@ -53,7 +53,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPut]
-        [Route("modules/{moduleId:int:min(1)}")]
+        [Route("modules/{moduleId:int}")]
         [SwaggerResponse(HttpStatusCode.NoContent, Description = "Updates an existed module.")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
@@ -77,7 +77,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        [Route("groups")]
+        [Route("groups/")]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of groups.", Type = typeof(Group[]))]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetGroups()
@@ -86,7 +86,7 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        [Route("studentModules")]
+        [Route("studentModules/")]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of student modules.", Type = typeof(StudentModule[]))]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetStudentModules()
