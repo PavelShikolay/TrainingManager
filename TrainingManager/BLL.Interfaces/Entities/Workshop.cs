@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace ORM.Entities
+namespace BLL.Interfaces.Entities
 {
     public class Workshop
     {
@@ -10,9 +9,5 @@ namespace ORM.Entities
         public int GroupId { get; set; }
         public DateTime DateTime { get; set; }
         public string Location { get; set; }
-
-        public virtual Module Module { get; set; }
-        public virtual ICollection<Attendance> Attendances { get; set; }
-        public virtual Group Group { get; set; }
     }
 }

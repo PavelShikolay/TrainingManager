@@ -46,6 +46,7 @@
     <Compile Include="Entities\StudentModule.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Request.cs" />
+    <Compile Include="Entities\Workshop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
