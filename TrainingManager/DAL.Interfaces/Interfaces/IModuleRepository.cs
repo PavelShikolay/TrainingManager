@@ -1,4 +1,5 @@
-﻿using DAL.Interfaces.DTO;
+﻿using System.Threading.Tasks;
+using DAL.Interfaces.DTO;
 
 namespace DAL.Interfaces.Interfaces
 {
@@ -8,22 +9,22 @@ namespace DAL.Interfaces.Interfaces
         /// Creates new module
         /// </summary>
         /// <param name="moduleDto">Module DTO</param>
-        void AddModule(ModuleDto moduleDto);
+        Task AddModuleAsync(ModuleDto moduleDto);
         /// <summary>
         /// Returns module specified by id
         /// </summary>
         /// <param name="id">Module id</param>
-        void GetModule(int id);
+        Task<ModuleDto> GetModuleAsync(int id);
         /// <summary>
         /// Updates information about existing module
         /// </summary>
         /// <param name="id">Id</param>
         /// <param name="moduleDto">Module DTO</param>
-        void UpdateModule(int id, ModuleDto moduleDto);
+        Task UpdateModuleAsync(int id, ModuleDto moduleDto);
         /// <summary>
         /// Deletes module specified by id
         /// </summary>
         /// <param name="id">Id</param>
-        void DeleteModule(int id);
+        Task DeleteModuleAsync(int id);
     }
 }
