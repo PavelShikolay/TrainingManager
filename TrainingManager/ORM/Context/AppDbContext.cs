@@ -8,6 +8,7 @@ namespace ORM.Context
     {
         public AppDbContext() : base("TrainingManagerConnection")
         {
+
         }
 
         public DbSet<User> Users { get; set; }
@@ -53,16 +54,6 @@ namespace ORM.Context
             modelBuilder.Entity<Workshop>()
                         .HasRequired<Module>(w => w.Module)
                         .WithOptional(m => m.Workshop);
-
-            modelBuilder.Entity<Workshop>()
-                        .HasRequired<Group>(w => w.Group)
-                        .WithMany(g => g.Workshops)
-                        .HasForeignKey(w => w.GroupId);
-
-            modelBuilder.Entity<Module>()
-                        .HasRequired<Group>(m => m.Group)
-                        .WithMany(g => g.Modules)
-                        .HasForeignKey(m => m.GroupId);
 
             modelBuilder.Entity<Attendance>()
                         .HasRequired<Workshop>(a => a.Workshop)

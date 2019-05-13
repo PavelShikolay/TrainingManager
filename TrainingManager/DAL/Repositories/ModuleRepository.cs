@@ -4,6 +4,8 @@ using DAL.Interfaces.DTO;
 using DAL.Interfaces.Interfaces;
 using ORM.Context;
 using ORM.Entities;
+using DAL.Mappers;
+using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
@@ -11,24 +13,63 @@ namespace DAL.Repositories
     {
         private AppDbContext context;
 
-        public void AddModule(ModuleDto moduleDto)
+        public async Task AddModuleAsync(ModuleDto moduleDto)
         {
-            throw new NotImplementedException();
+            if(moduleDto == null)
+            {
+                throw new ArgumentNullException(nameof(moduleDto));
+            }
+
+            context.Modules.Add(moduleDto.ToModule());
+
+            await context.SaveChangesAsync();
         }
 
-        public void DeleteModule(int id)
+        public async Task DeleteModuleAsync(int id)
         {
-            throw new NotImplementedException();
+            Module module = await context.Modules.FindAsync(id);
+
+            if(module == null)
+            {
+                throw new ArgumentException();
+            }
+
+            context.Modules.Remove(module);
+            context.SaveChanges();
         }
 
-        public void GetModule(int id)
+        public async Task<ModuleDto> GetModuleAsync(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return (await context.Modules.FindAsync(id)).ToModuleDto();
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException();
+            }
         }
 
-        public void UpdateModule(int id, ModuleDto moduleDto)
+        public async Task UpdateModuleAsync(int id, ModuleDto moduleDto)
         {
-            throw new NotImplementedException();
+            if (moduleDto == null)
+            {
+                throw new ArgumentNullException();
+            }
+            
+            Module module = await context.Modules.FindAsync(id);
+
+            if(module == null)
+            {
+                throw new ArgumentException();
+            }
+
+            module.Name = moduleDto.Name;
+            module.Description = moduleDto.Description;
+            module.Deadline = moduleDto.Deadline;
+            module.CreatedAt = moduleDto.CreatedAt;
+
+            context.SaveChanges();
         }
     }
 }

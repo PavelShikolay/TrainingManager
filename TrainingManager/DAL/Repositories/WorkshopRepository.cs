@@ -4,6 +4,9 @@ using DAL.Interfaces.DTO;
 using DAL.Interfaces.Interfaces;
 using ORM.Context;
 using ORM.Entities;
+using System.Threading.Tasks;
+using DAL.Mappers;
+using System.Linq;
 
 namespace DAL.Repositories
 {
@@ -11,39 +14,94 @@ namespace DAL.Repositories
     {
         private AppDbContext context;
 
-        public void AddWorkshop(WorkshopDto workshopDto)
+        public async Task AddWorkshopAsync(WorkshopDto workshopDto)
         {
-            throw new NotImplementedException();
+            if(workshopDto == null)
+            {
+                throw new ArgumentException();
+            }
+
+            context.Workshops.Add(workshopDto.ToWorkshop());
+            await context.SaveChangesAsync();
         }
 
-        public void DeleteWorkshop(int id)
+        public async Task DeleteWorkshopAsync(int id)
         {
-            throw new NotImplementedException();
+            var workshop = await context.Workshops.FindAsync(id);
+
+            if(workshop == null)
+            {
+                throw new ArgumentException();
+            }
+
+            context.Workshops.Remove(workshop);
+            await context.SaveChangesAsync();
         }
 
-        public bool GetStudentAttendance(int workshopId, int studentId)
+        public async Task<bool> GetStudentAttendanceAsync(int workshopId, int studentId)
         {
-            throw new NotImplementedException();
+            var studentAttendence = context.Attendances.First(a => a.WorkshopId == workshopId && a.StudentId == studentId);
+
+            if(studentAttendence == null)
+            {
+                throw new ArgumentException();
+            }
+
+            return studentAttendence.IsAttended;
         }
 
-        public WorkshopDto GetWorkshop(int id)
+        public async Task<WorkshopDto> GetWorkshopAsync(int id)
         {
-            throw new NotImplementedException();
+            var workshop = (await context.Workshops.FindAsync(id)).ToWorkshopDto();
+
+            if (workshop == null)
+            {
+                throw new ArgumentException();
+            }
+
+            return workshop;
         }
 
-        public WorkshopDto GetWorkshopByModuleId(int moduleId)
+        public async Task<WorkshopDto> GetWorkshopByModuleIdAsync(int moduleId)
         {
-            throw new NotImplementedException();
+            var workshop = (await context.Workshops.FindAsync(moduleId)).ToWorkshopDto();
+
+            if (workshop == null)
+            {
+                throw new ArgumentException();
+            }
+
+            return workshop;
         }
 
-        public void UpdateStudentAttendance(int workshopId, int studentId, bool isAttended)
+        public async Task UpdateStudentAttendanceAsync(int workshopId, int studentId, bool isAttended)
         {
-            throw new NotImplementedException();
+            var studentAttendence = context.Attendances.First(a => a.WorkshopId == workshopId && a.StudentId == studentId);
+
+            if (studentAttendence == null)
+            {
+                throw new ArgumentException();
+            }
+
+            studentAttendence.IsAttended = isAttended;
+
+            await context.SaveChangesAsync();
         }
 
-        public void UpdateWorkshop(int id, WorkshopDto workshopDto)
+        public async Task UpdateWorkshopAsync(int id, WorkshopDto workshopDto)
         {
-            throw new NotImplementedException();
+            var workshop = (await context.Workshops.FindAsync(id)).ToWorkshopDto();
+
+            if(workshop == null)
+            {
+                throw new ArgumentException();
+            }
+
+            workshop.DateTime = workshopDto.DateTime;
+            workshop.Location = workshopDto.Location;
+            workshop.ModuleId = workshopDto.ModuleId;
+
+            await context.SaveChangesAsync();
         }
     }
 }

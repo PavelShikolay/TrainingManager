@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using DAL.Interfaces.DTO;
 using DAL.Interfaces.Interfaces;
 using ORM.Context;
-using ORM.Entities;
+using DAL.Mappers;
+using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
@@ -11,34 +13,78 @@ namespace DAL.Repositories
     {
         private AppDbContext context;
 
-        public void AddStudentModule(StudentModuleDto studentModuleDto)
+        public async Task AddStudentModuleAsync(StudentModuleDto studentModuleDto)
         {
-            throw new NotImplementedException();
+            if(studentModuleDto == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            context.StudentModules.Add(studentModuleDto.ToStudentModule());
+
+            await context.SaveChangesAsync();
         }
 
-        public void DeleteStudentModule(int id)
+        public async Task DeleteStudentModuleAsync(int id)
         {
-            throw new NotImplementedException();
+            StudentModuleDto studentModule = (await context.StudentModules.FindAsync(id)).ToStudentModuleDto();
+
+            if(studentModule == null)
+            {
+                throw new ArgumentException("No studentModule with such id found");
+            }
+
+            context.StudentModules.Remove(studentModule.ToStudentModule());
+            await context.SaveChangesAsync();
         }
 
-        public StudentModuleDto GetStudentModuleDto(int id)
+        public async Task<StudentModuleDto> GetStudentModuleDtoAsync(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return (await context.StudentModules.FindAsync(id)).ToStudentModuleDto();
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException("No studentModule with such id found");
+            }
         }
 
-        public IEnumerable<StudentModuleDto> GetStudentModuleDtosByModuleId(int moduleId)
+        public async Task<IEnumerable<StudentModuleDto>> GetStudentModuleDtosByModuleIdAsync(int moduleId)
         {
-            throw new NotImplementedException();
+            var studentModule = from s in context.StudentModules
+                                where s.ModuleId == moduleId
+                                select s.ToStudentModuleDto();
+
+            return (await ORM.QueriableExtensions.ToArrayAsync(studentModule));
         }
 
-        public IEnumerable<StudentModuleDto> GetStudentModuleDtosByStudentId(int studentId)
+        public async Task<IEnumerable<StudentModuleDto>> GetStudentModuleDtosByStudentIdAsync(int studentId)
         {
-            throw new NotImplementedException();
+            var studentModule = from s in context.StudentModules
+                                where s.StudentId == studentId
+                                select s.ToStudentModuleDto();
+
+            return (await ORM.QueriableExtensions.ToArrayAsync(studentModule));
         }
 
-        public void UpdateStudentModule(int id, StudentModuleDto studentModuleDto)
+        public async Task UpdateStudentModuleAsync(int id, StudentModuleDto studentModuleDto)
         {
-            throw new NotImplementedException();
+            var studentModule = (await context.StudentModules.FindAsync(id)).ToStudentModuleDto();
+
+            if (studentModule == null)
+            {
+                throw new ArgumentException();
+            }
+
+            studentModule.GithubLink = studentModuleDto.GithubLink;
+            studentModule.Grade = studentModuleDto.Grade;
+            studentModule.ModuleId = studentModuleDto.ModuleId;
+            studentModule.StudentId = studentModuleDto.StudentId;
+            studentModule.DoneAt = studentModuleDto.DoneAt;
+            studentModule.Feedback = studentModule.Feedback;
+
+            await context.SaveChangesAsync();
         }
     }
 }

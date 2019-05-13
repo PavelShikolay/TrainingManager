@@ -4,6 +4,9 @@ using DAL.Interfaces.DTO;
 using DAL.Interfaces.Interfaces;
 using ORM.Context;
 using ORM.Entities;
+using System.Threading.Tasks;
+using System.Linq;
+using DAL.Mappers;
 
 namespace DAL.Repositories
 {
@@ -11,29 +14,69 @@ namespace DAL.Repositories
     {
         private AppDbContext context;
 
-        public void AddUser(UserDto userDto)
+        public async Task AddUserAsync(UserDto userDto)
         {
-            throw new NotImplementedException();
+            if(userDto == null)
+            {
+                throw new ArgumentException();
+            }
+
+            context.Users.Add(userDto.ToUser());
+            await context.SaveChangesAsync();
         }
 
-        public void DeleteUser(int id)
+        public async Task DeleteUserAsync(int id)
         {
-            throw new NotImplementedException();
+            UserDto user = (await context.Users.FindAsync(id)).ToUserDto();
+
+            if(user == null)
+            {
+                throw new ArgumentException();
+            }
+
+            context.Users.Remove(user.ToUser());
+            await context.SaveChangesAsync();
         }
 
-        public UserDto GetUser(int id)
+        public async Task<UserDto> GetUserAsync(int id)
         {
-            throw new NotImplementedException();
+            UserDto user = (await context.Users.FindAsync(id)).ToUserDto();
+
+            if (user == null)
+            {
+                throw new ArgumentException();
+            }
+
+            return user;
         }
 
-        public IEnumerable<UserDto> GetUsers(int roleId)
+        public async Task<IEnumerable<UserDto>> GetUsersAsync(int roleId)
         {
-            throw new NotImplementedException();
+            var users = from u in context.Users
+                        where u.RoleId == roleId
+                        select u.ToUserDto();
+
+            return (await ORM.QueriableExtensions.ToListAsync(users));
         }
 
-        public void UpdateUser(int id, UserDto updatedUser)
+        public async Task UpdateUserAsync(int id, UserDto updatedUser)
         {
-            throw new NotImplementedException();
+            var user = (await context.Users.FindAsync(id)).ToUserDto();
+
+            if(user == null)
+            {
+                throw new ArgumentException();
+            }
+
+            user.Name = updatedUser.Name;
+            user.Surname = updatedUser.Surname;
+            user.Patronymic = updatedUser.Patronymic;
+            user.RoleId = updatedUser.RoleId;
+            user.PhoneNumber = updatedUser.PhoneNumber;
+            user.GithubLink = updatedUser.GithubLink;
+            user.Email = updatedUser.Email;
+
+            await context.SaveChangesAsync();
         }
     }
 }

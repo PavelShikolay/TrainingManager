@@ -65,7 +65,11 @@
     <Compile Include="Entities\StudentModule.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Workshop.cs" />
+    <Compile Include="EntitySet.cs" />
+    <Compile Include="EntitySetBase.cs" />
+    <Compile Include="IEntitySet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueriableExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

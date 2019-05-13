@@ -23,6 +23,15 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
+        [Route("groups/")]
+        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of groups.", Type = typeof(Group[]))]
+        [SwaggerResponse(HttpStatusCode.InternalServerError)]
+        public async Task<IHttpActionResult> GetGroups()
+        {
+            return Ok();
+        }
+
+        [HttpGet]
         [Route("modules/")]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of modules.", Type = typeof(Module[]))]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
@@ -72,15 +81,6 @@ namespace WebUI.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound)]
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> DeleteModule([FromUri] int moduleId)
-        {
-            return Ok();
-        }
-
-        [HttpGet]
-        [Route("groups/")]
-        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of groups.", Type = typeof(Group[]))]
-        [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> GetGroups()
         {
             return Ok();
         }
