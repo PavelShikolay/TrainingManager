@@ -24,11 +24,20 @@ namespace BLL.Interfaces.Interfaces
         /// <summary>
         /// Adds module into group
         /// </summary>
-        /// <param name="groupId"></param>
-        /// <param name="module"></param>
-        /// <returns></returns>
+        /// <param name="groupId">Group id</param>
+        /// <param name="module">Module info</param>
+        /// <returns>Id of created module</returns>
         int AddModuleAsync(int groupId, Module module);
+        /// <summary>
+        /// Updates existed module
+        /// </summary>
+        /// <param name="moduleId">Module id</param>
+        /// <param name="module">Module new info</param>
         void UpdateModuleAsync(int moduleId, Module module);
+        /// <summary>
+        /// Deletes existed module
+        /// </summary>
+        /// <param name="moduleId">Module id</param>
         void DeleteModuleAsync(int moduleId);
     }
 }

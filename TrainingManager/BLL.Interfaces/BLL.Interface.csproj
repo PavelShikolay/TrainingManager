@@ -41,14 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Attendance.cs" />
     <Compile Include="Entities\Group.cs" />
     <Compile Include="Entities\Module.cs" />
     <Compile Include="Entities\StudentModule.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Workshop.cs" />
-    <Compile Include="Interfaces\IGroupsService.cs" />
+    <Compile Include="Interfaces\IGroupService.cs" />
     <Compile Include="Interfaces\IModuleService.cs" />
+    <Compile Include="Interfaces\IStudentModulesService.cs" />
+    <Compile Include="Interfaces\IStudentService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Interfaces\IWorkshopService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

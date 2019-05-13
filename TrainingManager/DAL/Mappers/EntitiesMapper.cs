@@ -148,5 +148,37 @@ namespace DAL.Mappers
                 Location = workshop.Location
             };
         }
+
+        /// <summary>
+        /// Maps attendance DTO entity to attendance entity
+        /// </summary>
+        /// <param name="attendanceDto">Attendance DTO entity</param>
+        /// <returns>Attendance entity</returns>
+        public static Attendance ToAttendance(this AttendanceDto attendanceDto)
+        {
+            return new Attendance()
+            {
+                Id = attendanceDto.Id,
+                StudentId = attendanceDto.StudentId,
+                WorkshopId = attendanceDto.WorkshopId,
+                IsAttended = attendanceDto.IsAttended
+            };
+        }
+
+        /// <summary>
+        /// Maps attendance entity to attendance DTO entity
+        /// </summary>
+        /// <param name="attendanceDto">Attendance DTO entity</param>
+        /// <returns>Attendance entity</returns>
+        public static AttendanceDto ToAttendanceDto(this Attendance attendanceDto)
+        {
+            return new AttendanceDto()
+            {
+                Id = attendanceDto.Id,
+                StudentId = attendanceDto.StudentId,
+                WorkshopId = attendanceDto.WorkshopId,
+                IsAttended = attendanceDto.IsAttended
+            };
+        }
     }
 }

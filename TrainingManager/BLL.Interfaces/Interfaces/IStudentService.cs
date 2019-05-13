@@ -7,41 +7,20 @@ using BLL.Interfaces.Entities;
 
 namespace BLL.Interfaces.Interfaces
 {
-    public interface IGroupsService
+    public interface IStudentService
     {
-        /// <summary>
-        /// Returns all groups
-        /// </summary>
-        /// <returns>All groups</returns>
-        IEnumerable<Group> GetGroupsAsync();
-        /// <summary>
-        /// Returns specified group entity
-        /// </summary>
-        /// <param name="groupId">Group id</param>
-        /// <returns>Group entity</returns>
-        Group GetGroupAsync(int groupId);
-        /// <summary>
-        /// Adds group
-        /// </summary>
-        /// <returns>Created group id</returns>
-        int AddGroupAsync();
-        /// <summary>
-        /// Updates existed group
-        /// </summary>
-        /// <param name="groupId">Group id</param>
-        /// <param name="group">New group info</param>
-        void UpdateGroupAsync(int groupId, Group group);
-        /// <summary>
-        /// Deletes existed group
-        /// </summary>
-        /// <param name="groupId">Group id</param>
-        void DeleteGroupAsync(int groupId);
         /// <summary>
         /// Returns all students in group
         /// </summary>
         /// <param name="groupId"></param>
         /// <returns></returns>
         IEnumerable<User> GetStudentsAsync(int groupId);
+        /// <summary>
+        /// Returns specified student
+        /// </summary>
+        /// <param name="studentId">Student id</param>
+        /// <returns>Specified student</returns>
+        User GetStudentAsync(int studentId);
         /// <summary>
         /// Adds student into group
         /// </summary>
