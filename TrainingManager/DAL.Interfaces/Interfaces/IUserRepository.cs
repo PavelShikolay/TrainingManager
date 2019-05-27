@@ -7,10 +7,17 @@ namespace DAL.Interfaces.Interfaces
     public interface IUserRepository
     {
         /// <summary>
-        /// Adds new user
+        /// Returns a collection of all users 
         /// </summary>
-        /// <param name="userDto">New user entity</param>
-        Task AddUserAsync(UserDto userDto);
+        /// <param name="roleId">Role id</param>
+        /// <returns>collection of users with specified role</returns>
+        Task<IEnumerable<UserDto>> GetUsersAsync();
+        /// <summary>
+        /// Returns a collection of users with specified role
+        /// </summary>
+        /// <param name="roleId">Role id</param>
+        /// <returns>collection of users with specified role</returns>
+        Task<IEnumerable<UserDto>> GetUsersAsync(string role);
         /// <summary>
         /// Returns user entity using user id
         /// </summary>
@@ -18,11 +25,10 @@ namespace DAL.Interfaces.Interfaces
         /// <returns>User entity</returns>
         Task<UserDto> GetUserAsync(int id);
         /// <summary>
-        /// Returns a collection of users with specified role
+        /// Adds new user
         /// </summary>
-        /// <param name="roleId">Role id</param>
-        /// <returns>collection of users with specified role</returns>
-        Task<IEnumerable<UserDto>> GetUsersAsync(int roleId);
+        /// <param name="userDto">New user entity</param>
+        Task<int> AddUserAsync(UserDto userDto);
         /// <summary>
         /// Updates information about user
         /// </summary>

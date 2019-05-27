@@ -1,4 +1,5 @@
 ﻿using DAL.Interfaces.DTO;
+using System.Linq;
 using ORM.Entities;
 
 namespace DAL.Mappers
@@ -12,10 +13,13 @@ namespace DAL.Mappers
         /// <returns>User entity</returns>
         public static User ToUser(this UserDto userDto)
         {
+            int roleId = (new ORM.Context.AppDbContext()).Roles.First(r => r.Name == userDto.Role).Id;
+
             return new User()
             {
                 Id = userDto.Id,
-                RoleId = userDto.RoleId,
+                GroupId = userDto.GroupId,
+                RoleId = roleId,
                 Name = userDto.Name,
                 Surname = userDto.Surname,
                 Patronymic = userDto.Patronymic,
@@ -32,16 +36,49 @@ namespace DAL.Mappers
         /// <returns>User DTO entity</returns>
         public static UserDto ToUserDto(this User user)
         {
+            string role = (new ORM.Context.AppDbContext()).Roles.First(r => r.Id == user.Id).Name;
+
             return new UserDto()
             {
                 Id = user.Id,
-                RoleId = user.RoleId,
+                GroupId = user.GroupId,
+                Role = role,
                 Name = user.Name,
                 Surname = user.Surname,
                 Patronymic = user.Patronymic,
                 GithubLink = user.GithubLink,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber
+            };
+        }
+
+        /// <summary>
+        /// Maps group DTO entity to group entity
+        /// </summary>
+        /// <param name="userDto">Group DTO entity</param>
+        /// <returns>Group entity</returns>
+        public static Group ToGroup(this GroupDto groupDto)
+        {
+            return new Group
+            {
+                Id = groupDto.Id,
+                MentorId = groupDto.MentorId,
+                Name = groupDto.Name
+            };
+        }
+
+        /// <summary>
+        /// Maps group entity to group DTO entity
+        /// </summary>
+        /// <param name="user">Group entity</param>
+        /// <returns>Group DTO entity</returns>
+        public static GroupDto ToGroupDto(this Group group)
+        {
+            return new GroupDto
+            {
+                Id = group.Id,
+                MentorId = group.MentorId,
+                Name = group.Name
             };
         }
 
@@ -55,6 +92,7 @@ namespace DAL.Mappers
             return new Module()
             {
                 Id = moduleDto.Id,
+                GroupId = moduleDto.GroupId,
                 Name = moduleDto.Name,
                 Description = moduleDto.Description,
                 CreatedAt = moduleDto.CreatedAt,
@@ -72,6 +110,7 @@ namespace DAL.Mappers
             return new ModuleDto()
             {
                 Id = module.Id,
+                GroupId = module.GroupId,
                 Name = module.Name,
                 Description = module.Description,
                 CreatedAt = module.CreatedAt,
@@ -128,6 +167,7 @@ namespace DAL.Mappers
             {
                 Id = workshopDto.Id,
                 ModuleId = workshopDto.ModuleId,
+                GroupId = workshopDto.GroupId,
                 DateTime = workshopDto.DateTime,
                 Location = workshopDto.Location
             };
@@ -144,6 +184,7 @@ namespace DAL.Mappers
             {
                 Id = workshop.Id,
                 ModuleId = workshop.ModuleId,
+                GroupId = workshop.GroupId,
                 DateTime = workshop.DateTime,
                 Location = workshop.Location
             };

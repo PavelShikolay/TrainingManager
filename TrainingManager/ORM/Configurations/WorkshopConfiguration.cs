@@ -11,6 +11,7 @@ namespace ORM.Configurations
             ToTable("workshops");
             HasKey(w => w.Id);
             Property(w => w.Id).HasColumnName("id");
+            Property(w => w.GroupId).HasColumnName("group_id").IsRequired();
             Property(w => w.ModuleId).HasColumnName("module_id").IsRequired();
             Property(w => w.DateTime).HasColumnName("datetime").IsRequired();
             Property(w => w.Location).HasColumnName("location").IsRequired();

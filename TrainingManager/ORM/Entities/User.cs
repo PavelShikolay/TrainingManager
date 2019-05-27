@@ -18,5 +18,6 @@ namespace ORM.Entities
         public virtual ICollection<StudentModule> StudentModules { get; set; }
         public virtual Role Role { get; set; }
         public virtual Group Group { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
     }
 }

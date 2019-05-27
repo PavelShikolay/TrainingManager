@@ -7,11 +7,6 @@ namespace DAL.Interfaces.Interfaces
     public interface IStudentModuleRepository
     {
         /// <summary>
-        /// Adds student module
-        /// </summary>
-        /// <param name="studentModuleDto">Student module entity</param>
-        Task AddStudentModuleAsync(StudentModuleDto studentModuleDto);
-        /// <summary>
         /// Returns student existing student module entity 
         /// </summary>
         /// <param name="id">Id</param>
@@ -30,6 +25,11 @@ namespace DAL.Interfaces.Interfaces
         /// <returns>Collection of student modules of specifed module</returns>
         Task<IEnumerable<StudentModuleDto>> GetStudentModuleDtosByModuleIdAsync(int moduleId);
         /// <summary>
+        /// Adds student module
+        /// </summary>
+        /// <param name="studentModuleDto">Student module entity</param>
+        Task AddStudentModulesAsync(int moduleId);
+        /// <summary>
         /// Update existing student module
         /// </summary>
         /// <param name="id">Id</param>
@@ -39,6 +39,6 @@ namespace DAL.Interfaces.Interfaces
         /// Deletes student module
         /// </summary>
         /// <param name="id">Id</param>
-        Task DeleteStudentModuleAsync(int id);
+        Task DeleteStudentModulesAsync(int moduleId);
     }
 }

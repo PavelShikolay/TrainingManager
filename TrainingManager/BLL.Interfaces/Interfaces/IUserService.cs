@@ -13,35 +13,34 @@ namespace BLL.Interfaces.Interfaces
         /// Returns all users
         /// </summary>
         /// <returns>All users</returns>
-        IEnumerable<User> GetUsersAsync();
+        Task<IEnumerable<User>> GetUsersAsync();
+        /// <summary>
+        /// Returns all users with specified role
+        /// </summary>
+        /// <returns>All users</returns>
+        Task<IEnumerable<User>> GetUsersAsync(string role);
         /// <summary>
         /// Adds new user
         /// </summary>
         /// <param name="user">User info</param>
         /// <returns>User id</returns>
-        int AddUserAsync(User user);
-        /// <summary>
-        /// Adds new user
-        /// </summary>
-        /// <param name="user">User info</param>
-        /// <returns>User id</returns>
-        int AddUserAsync(string userRole, User user);
+        Task<int> AddUserAsync(User user);
         /// <summary>
         /// Returns user specified by id
         /// </summary>
         /// <param name="userId">User id</param>
         /// <returns>User entity</returns>
-        User GetUserAsync(int userId);
+        Task<User> GetUserAsync(int userId);
         /// <summary>
         /// Updates specified user
         /// </summary>
         /// <param name="userId">User id</param>
         /// <param name="user">New user info</param>
-        void UpdateUserAsync(int userId, User user);
+        Task UpdateUserAsync(int userId, User user);
         /// <summary>
         /// Deletes existed user
         /// </summary>
         /// <param name="userId">User id</param>
-        void DeleteUserAsync(int userId);
+        Task DeleteUserAsync(int userId);
     }
 }

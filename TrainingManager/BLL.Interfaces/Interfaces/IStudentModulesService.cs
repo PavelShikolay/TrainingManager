@@ -14,22 +14,29 @@ namespace BLL.Interfaces.Interfaces
         /// </summary>
         /// <param name="moduleId">Module id</param>
         /// <returns>Collection of student modules for specified module</returns>
-        IEnumerable<StudentModule> GetStudentModulesAsync(int moduleId);
+        Task<IEnumerable<StudentModule>> GetStudentModulesAsync(int moduleId);
+        /// <summary>
+        /// Returns student module of specified student 
+        /// </summary>
+        /// <param name="studentId">Student id</param>
+        /// <param name="moduleId">Module id</param>
+        /// <returns>Student module entity of specified student</returns>
+        Task<StudentModule> GetStudentModuleAsync(int studentId, int moduleId);
         /// <summary>
         /// Adds student modules for all students in group which has specified module
         /// </summary>
         /// <param name="moduleId">Module id</param>
-        void AddStudentModulesAsync(int moduleId);
+        Task AddStudentModulesAsync(int moduleId);
         /// <summary>
         /// Updates specified student module
         /// </summary>
         /// <param name="studentModuleId">Student module id</param>
         /// <param name="studentModule">Student module new info</param>
-        void UpdateStudentModuleAsync(int studentModuleId, StudentModule studentModule);
+        Task UpdateStudentModuleAsync(int studentModuleId, StudentModule studentModule);
         /// <summary>
         /// Deletes all student modules for specified module
         /// </summary>
         /// <param name="moduleId">Module id</param>
-        void DeleteStudentModulesAsync(int moduleId);
+        Task DeleteStudentModulesAsync(int moduleId);
     }
 }

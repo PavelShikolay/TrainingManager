@@ -13,29 +13,29 @@ namespace BLL.Interfaces.Interfaces
         /// Returns all groups
         /// </summary>
         /// <returns>All groups</returns>
-        IEnumerable<Group> GetGroupsAsync();
+        Task<IEnumerable<Group>> GetGroupsAsync();
         /// <summary>
         /// Returns specified group entity
         /// </summary>
         /// <param name="groupId">Group id</param>
         /// <returns>Group entity</returns>
-        Group GetGroupAsync(int groupId);
+        Task<Group> GetGroupAsync(int groupId);
         /// <summary>
         /// Adds group
         /// </summary>
         /// /// <param name="group">Group info</param>
         /// <returns>Created group id</returns>
-        int AddGroupAsync(Group group);
+        Task<int> AddGroupAsync(Group group);
         /// <summary>
         /// Updates existed group
         /// </summary>
         /// <param name="groupId">Group id</param>
         /// <param name="group">New group info</param>
-        void UpdateGroupAsync(int groupId, Group group);
+        Task UpdateGroupAsync(int groupId, Group group);
         /// <summary>
         /// Deletes existed group
         /// </summary>
         /// <param name="groupId">Group id</param>
-        void DeleteGroupAsync(int groupId);
+        Task DeleteGroupAsync(int groupId);
     }
 }

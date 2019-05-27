@@ -47,6 +47,7 @@
     <Compile Include="DTO\StudentModuleDto.cs" />
     <Compile Include="DTO\UserDto.cs" />
     <Compile Include="DTO\WorkshopDto.cs" />
+    <Compile Include="Interfaces\IGroupRepository.cs" />
     <Compile Include="Interfaces\IModuleRepository.cs" />
     <Compile Include="Interfaces\IStudentModuleRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />

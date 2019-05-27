@@ -1,4 +1,5 @@
-﻿using DAL.Interfaces.DTO;
+﻿using System.Collections.Generic;
+using DAL.Interfaces.DTO;
 using System.Threading.Tasks;
 
 namespace DAL.Interfaces.Interfaces
@@ -6,10 +7,16 @@ namespace DAL.Interfaces.Interfaces
     public interface IWorkshopRepository
     {
         /// <summary>
-        /// Adds new workshop
+        /// Returns collection of all workshops
         /// </summary>
-        /// <param name="workshopDto">Workshop DTO</param>
-        Task AddWorkshopAsync(WorkshopDto workshopDto);
+        /// <returns>Collection of all workshops</returns>
+        Task<IEnumerable<WorkshopDto>> GetWorkshops();
+        /// <summary>
+        /// Returns all workshops of specified group
+        /// </summary>
+        /// <param name="groupId">Group id</param>
+        /// <returns>Collection of workshops of specified group</returns>
+        Task<IEnumerable<WorkshopDto>> GetWorkshopsAsync(int groupId);
         /// <summary>
         /// Returns existing workshop by id
         /// </summary>
@@ -22,6 +29,12 @@ namespace DAL.Interfaces.Interfaces
         /// <param name="moduleId">Module id</param>
         /// <returns>Existing workshop</returns>
         Task<WorkshopDto> GetWorkshopByModuleIdAsync(int moduleId);
+        /// <summary>
+        /// Adds new workshop
+        /// </summary>
+        /// <param name="groupId">Group id</param>
+        /// <param name="workshopDto">Workshop DTO</param>
+        Task<int> AddWorkshopAsync(int groupId, WorkshopDto workshopDto);
         /// <summary>
         /// Updates information about workshop
         /// </summary>
@@ -39,7 +52,7 @@ namespace DAL.Interfaces.Interfaces
         /// <param name="workshopId">Workshop id</param>
         /// <param name="studentId">Student id</param>
         /// <returns>Student attendance at workshop</returns>
-        Task<bool> GetStudentAttendanceAsync(int workshopId, int studentId);
+        Task<AttendanceDto> GetStudentAttendanceAsync(int workshopId, int studentId);
         /// <summary>
         /// Updates information about attendance of workshop by student
         /// </summary>

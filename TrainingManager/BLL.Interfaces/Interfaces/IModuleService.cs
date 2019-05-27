@@ -14,30 +14,30 @@ namespace BLL.Interfaces.Interfaces
         /// </summary>
         /// <param name="groupId">Group id of which this module belongs</param>
         /// <returns>All modules in selected group</returns>
-        IEnumerable<Module> GetModulesAsync(int groupId);
+        Task<IEnumerable<Module>> GetModulesAsync(int groupId);
         /// <summary>
         /// Returns selected module
         /// </summary>
         /// <param name="moduleId">Module id</param>
         /// <returns>Selected module</returns>
-        Module GetModuleAsync(int moduleId);
+        Task<Module> GetModuleAsync(int moduleId);
         /// <summary>
         /// Adds module into group
         /// </summary>
         /// <param name="groupId">Group id</param>
         /// <param name="module">Module info</param>
         /// <returns>Id of created module</returns>
-        int AddModuleAsync(int groupId, Module module);
+        Task<int> AddModuleAsync(int groupId, Module module);
         /// <summary>
         /// Updates existed module
         /// </summary>
         /// <param name="moduleId">Module id</param>
         /// <param name="module">Module new info</param>
-        void UpdateModuleAsync(int moduleId, Module module);
+        Task UpdateModuleAsync(int moduleId, Module module);
         /// <summary>
         /// Deletes existed module
         /// </summary>
         /// <param name="moduleId">Module id</param>
-        void DeleteModuleAsync(int moduleId);
+        Task DeleteModuleAsync(int moduleId);
     }
 }

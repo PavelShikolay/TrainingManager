@@ -14,49 +14,49 @@ namespace BLL.Interfaces.Interfaces
         /// </summary>
         /// <param name="groupId">Group id</param>
         /// <returns>Collection of workshops for specified group</returns>
-        IEnumerable<Workshop> GetWorkshops(int groupId);
+        Task<IEnumerable<Workshop>> GetWorkshopsAsync(int groupId);
         /// <summary>
         /// Returns specified workshop
         /// </summary>
         /// <param name="workshopId">Workshop id</param>
         /// <returns>Specified workshop</returns>
-        Workshop GetWorkshop(int workshopId);
+        Task<Workshop> GetWorkshopAsync(int workshopId);
         /// <summary>
         /// Adds workshop for specified group
         /// </summary>
         /// <param name="groupId">Group id</param>
         /// <param name="workshop">Workshop info</param>
         /// <returns>Id of created workshop</returns>
-        int AddWorkshop(int groupId, Workshop workshop);
+        Task<int> AddWorkshopAsync(int groupId, Workshop workshop);
         /// <summary>
         /// Updates existed workshop
         /// </summary>
         /// <param name="workshopId">Workshop id</param>
         /// <param name="workshop">Workshop info</param>
-        void UpdateWorkshop(int workshopId, Workshop workshop);
+        Task UpdateWorkshopAsync(int workshopId, Workshop workshop);
         /// <summary>
         /// Deletes existed workshop
         /// </summary>
         /// <param name="workshopId">Workshop id</param>
-        void DeleteWorkshop(int workshopId);
+        Task DeleteWorkshopAsync(int workshopId);
         /// <summary>
         /// Returns attendance of stundent on workshop
         /// </summary>
         /// <param name="workshopId">Workshop id</param>
         /// <param name="studentId">Student id</param>
         /// <returns>Attendance of student on workshop</returns>
-        bool GetAttendance(int workshopId, int studentId);
+        Task<bool> GetAttendanceAsync(int workshopId, int studentId);
         /// <summary>
         /// Returns attendance of student on all workshops
         /// </summary>
         /// <param name="studentId">Student id</param>
         /// <returns>Collection of attendances of student on all workshops</returns>
-        IEnumerable<Attendance> GetAttendancesOfStudent(int studentId);
+        Task<IEnumerable<Attendance>> GetAttendancesOfStudentAsync(int studentId);
         /// <summary>
         /// Returns attendance of all students on workshop
         /// </summary>
         /// <param name="workshopId">Workshop id</param>
         /// <returns>Collection of attendances of all students on workshop</returns>
-        IEnumerable<Attendance> GetAttendancesAtWorkshop(int workshopId);
+        Task<IEnumerable<Attendance>> GetAttendancesAtWorkshopAsync(int workshopId);
     }
 }

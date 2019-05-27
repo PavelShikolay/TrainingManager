@@ -41,6 +41,11 @@ namespace ORM.Context
                         .WithMany(g => g.Users)
                         .HasForeignKey<int>(u => u.GroupId);
 
+            modelBuilder.Entity<Group>()
+                        .HasRequired<User>(g => g.User)
+                        .WithMany(u => u.Groups)
+                        .HasForeignKey(g => g.MentorId);
+
             modelBuilder.Entity<StudentModule>()
                         .HasRequired<User>(sm => sm.User)
                         .WithMany(u => u.StudentModules)
@@ -64,6 +69,16 @@ namespace ORM.Context
                         .HasRequired<User>(a => a.User)
                         .WithMany(u => u.Attendances)
                         .HasForeignKey<int>(a => a.StudentId);
+
+            modelBuilder.Entity<Module>()
+                        .HasRequired<Group>(m => m.Group)
+                        .WithMany(g => g.Modules)
+                        .HasForeignKey<int>(m => m.GroupId);
+
+            modelBuilder.Entity<Workshop>()
+                        .HasRequired<Group>(w => w.Group)
+                        .WithMany(g => g.Workshops)
+                        .HasForeignKey(w => w.GroupId);
 
             base.OnModelCreating(modelBuilder);
         }
