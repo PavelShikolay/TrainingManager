@@ -9,7 +9,7 @@ namespace DAL.Interfaces.Interfaces
         /// <summary>
         /// Returns collection of all groups
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Collection of all groups</returns>
         Task<ICollection<GroupDto>> GetGroupsAsync();
         /// <summary>
         /// Returns specified group entity

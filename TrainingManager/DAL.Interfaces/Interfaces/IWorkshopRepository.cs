@@ -34,7 +34,7 @@ namespace DAL.Interfaces.Interfaces
         /// </summary>
         /// <param name="groupId">Group id</param>
         /// <param name="workshopDto">Workshop DTO</param>
-        Task<int> AddWorkshopAsync(int groupId, WorkshopDto workshopDto);
+        Task<int> AddWorkshopAsync(WorkshopDto workshopDto);
         /// <summary>
         /// Updates information about workshop
         /// </summary>
@@ -56,9 +56,7 @@ namespace DAL.Interfaces.Interfaces
         /// <summary>
         /// Updates information about attendance of workshop by student
         /// </summary>
-        /// <param name="workshopId">Workshop id</param>
-        /// <param name="studentId">Student id</param>
-        /// <param name="isAttended">Attendance</param>
-        Task UpdateStudentAttendanceAsync(int workshopId, int studentId, bool isAttended);
+        /// <param name="attendanceDto">New attendance information</param>
+        Task UpdateStudentAttendanceAsync(AttendanceDto attendanceDto);
     }
 }

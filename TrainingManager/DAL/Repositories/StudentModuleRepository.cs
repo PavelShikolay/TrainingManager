@@ -3,86 +3,139 @@ using System.Linq;
 using System.Collections.Generic;
 using DAL.Interfaces.DTO;
 using DAL.Interfaces.Interfaces;
-using ORM.Context;
+using ORM.Entities;
 using DAL.Mappers;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace DAL.Repositories
 {
     public class StudentModuleRepository : IStudentModuleRepository
     {
-        private AppDbContext context;
-
-        public async Task AddStudentModuleAsync(StudentModuleDto studentModuleDto)
-        {
-            if(studentModuleDto == null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            context.StudentModules.Add(studentModuleDto.ToStudentModule());
-
-            await context.SaveChangesAsync();
-        }
-
-        public async Task DeleteStudentModuleAsync(int id)
-        {
-            StudentModuleDto studentModule = (await context.StudentModules.FindAsync(id)).ToStudentModuleDto();
-
-            if(studentModule == null)
-            {
-                throw new ArgumentException("No studentModule with such id found");
-            }
-
-            context.StudentModules.Remove(studentModule.ToStudentModule());
-            await context.SaveChangesAsync();
-        }
-
-        public async Task<StudentModuleDto> GetStudentModuleDtoAsync(int id)
-        {
-            try
-            {
-                return (await context.StudentModules.FindAsync(id)).ToStudentModuleDto();
-            }
-            catch (Exception)
-            {
-                throw new ArgumentException("No studentModule with such id found");
-            }
-        }
+        private readonly DbContext context;
 
         public async Task<IEnumerable<StudentModuleDto>> GetStudentModuleDtosByModuleIdAsync(int moduleId)
         {
-            var studentModule = from s in context.StudentModules
-                                where s.ModuleId == moduleId
-                                select s.ToStudentModuleDto();
+            if (moduleId <= 0)
+            {
+                throw new ArgumentException($"Argument {nameof(moduleId)} can't be less or equal zero!");
+            }
 
-            return (await ORM.QueriableExtensions.ToArrayAsync(studentModule));
+            var studentModules = await context.Set<StudentModule>().Where(sm => sm.ModuleId == moduleId).ToListAsync();
+
+            var studentModulesDtos = new List<StudentModuleDto>();
+
+            foreach (var studentModule in studentModules)
+            {
+                studentModulesDtos.Add(studentModule.ToStudentModuleDto());
+            }
+
+            return studentModulesDtos;
         }
 
         public async Task<IEnumerable<StudentModuleDto>> GetStudentModuleDtosByStudentIdAsync(int studentId)
         {
-            var studentModule = from s in context.StudentModules
-                                where s.StudentId == studentId
-                                select s.ToStudentModuleDto();
+            if (studentId <= 0)
+            {
+                throw new ArgumentException($"Argument {nameof(studentId)} can't be less or equal zero!");
+            }
 
-            return (await ORM.QueriableExtensions.ToArrayAsync(studentModule));
+            var studentModules = await context.Set<StudentModule>().Where(sm => sm.StudentId == studentId).ToListAsync();
+
+            var studentModulesDtos = new List<StudentModuleDto>();
+
+            foreach (var studentModule in studentModules)
+            {
+                studentModulesDtos.Add(studentModule.ToStudentModuleDto());
+            }
+
+            return studentModulesDtos;
+        }
+
+        public async Task<StudentModuleDto> GetStudentModuleDtoAsync(int id)
+        {
+            if (id <= 0)
+            {
+                throw new ArgumentException($"Argument {nameof(id)} can't be less or equal zero!");
+            }
+
+            var studentModule = await context.Set<StudentModule>().FirstAsync(sm => sm.Id == id);
+
+            return studentModule.ToStudentModuleDto();
+        }
+
+        public async Task AddStudentModulesAsync(int moduleId)
+        {
+            if (moduleId <= 0)
+            {
+                throw new ArgumentException($"Argument {nameof(moduleId)} can't be less or equal zero!");
+            }
+
+            int groupId = (await context.Set<Module>().FirstAsync(m => m.Id == moduleId)).GroupId;
+
+            var students = await context.Set<User>().Where(s => s.GroupId == groupId).ToListAsync();
+
+            foreach (var student in students)
+            {
+                context.Set<StudentModule>().Add(new StudentModule()
+                {
+                    ModuleId = moduleId,
+                    StudentId = student.Id
+                });
+            }
+
+            await context.SaveChangesAsync();
         }
 
         public async Task UpdateStudentModuleAsync(int id, StudentModuleDto studentModuleDto)
         {
-            var studentModule = (await context.StudentModules.FindAsync(id)).ToStudentModuleDto();
+            if (id <= 0)
+            {
+                throw new ArgumentException($"Argument {nameof(id)} can't be less or equal zero!");
+            }
+            if (studentModuleDto == null)
+            {
+                throw new ArgumentException($"Argument {nameof(studentModuleDto)} can't be null!");
+            }
+
+            var studentModule = await context.Set<StudentModule>().FirstAsync(sm => sm.Id == id);
 
             if (studentModule == null)
             {
-                throw new ArgumentException();
+                throw new ArgumentException($"Student module with id: {id} doesn't exists!");
             }
 
-            studentModule.GithubLink = studentModuleDto.GithubLink;
+            studentModule.Feedback = studentModuleDto.Feedback;
+            studentModule.GithubLink = studentModuleDto.Feedback;
             studentModule.Grade = studentModuleDto.Grade;
-            studentModule.ModuleId = studentModuleDto.ModuleId;
-            studentModule.StudentId = studentModuleDto.StudentId;
             studentModule.DoneAt = studentModuleDto.DoneAt;
-            studentModule.Feedback = studentModule.Feedback;
+
+            await context.SaveChangesAsync();
+        }
+
+        public async Task DeleteStudentModulesAsync(int moduleId)
+        {
+            if (moduleId <= 0)
+            {
+                throw new ArgumentException($"Argument {nameof(moduleId)} can't be less or equal zero!");
+            }
+
+            int groupId = (await context.Set<Module>().FirstAsync(m => m.Id == moduleId)).GroupId;
+
+            var students = await context.Set<User>().Where(s => s.GroupId == groupId).ToListAsync();
+
+            var studentModules = await context.Set<StudentModule>().Where(sm => sm.ModuleId == moduleId).ToListAsync();
+
+            foreach (var student in students)
+            {
+                foreach (var studentModule in studentModules)
+                {
+                    if (studentModule.StudentId == student.Id)
+                    {
+                        context.Set<StudentModule>().Remove(studentModule);
+                    }
+                }
+            }
 
             await context.SaveChangesAsync();
         }

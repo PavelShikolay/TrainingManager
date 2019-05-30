@@ -5,6 +5,7 @@ using BLL.Interfaces.Entities;
 using BLL.Interfaces.Interfaces;
 using BLL.Mappes;
 using DAL.Interfaces.Interfaces;
+using DAL.Interfaces.DTO;
 
 namespace BLL.Services
 {
@@ -19,7 +20,7 @@ namespace BLL.Services
                 throw new ArgumentException($"Argument {nameof(groupId)} can't be less or equal zero!");
             }
 
-            var moduleDtos = await moduleRepository.GetModuleDtosAsync(groupId);
+            var moduleDtos = await moduleRepository.GetModulesAsync(groupId);
 
             var modules = new List<Module>();
 
@@ -54,7 +55,11 @@ namespace BLL.Services
                 throw new ArgumentException($"Argument {nameof(module)} can't be null!");
             }
 
-            int id = await moduleRepository.AddModuleAsync(groupId, module.ToModuleDto());
+            ModuleDto moduleDto = module.ToModuleDto();
+
+            moduleDto.GroupId = groupId;
+
+            int id = await moduleRepository.AddModuleAsync(moduleDto);
 
             return id;
         }

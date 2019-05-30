@@ -45,18 +45,14 @@ namespace BLL.Services
             return workshopDto.ToWorkshop();
         }
 
-        public async Task<int> AddWorkshopAsync(int groupId, Workshop workshop)
+        public async Task<int> AddWorkshopAsync(Workshop workshop)
         {
-            if (groupId <= 0)
-            {
-                throw new ArgumentException($"Argument {nameof(groupId)} can't be less or equal zero!");
-            }
             if (workshop == null)
             {
                 throw new ArgumentNullException($"Argument {nameof(workshop)} can't be null!");
             }
 
-            int id = await workshopRepository.AddWorkshopAsync(groupId, workshop.ToWorkshopDto());
+            int id = await workshopRepository.AddWorkshopAsync(workshop.ToWorkshopDto());
 
             return id;
         }

@@ -27,7 +27,7 @@ namespace BLL.Interfaces.Interfaces
         /// <param name="groupId">Group id</param>
         /// <param name="workshop">Workshop info</param>
         /// <returns>Id of created workshop</returns>
-        Task<int> AddWorkshopAsync(int groupId, Workshop workshop);
+        Task<int> AddWorkshopAsync(Workshop workshop);
         /// <summary>
         /// Updates existed workshop
         /// </summary>

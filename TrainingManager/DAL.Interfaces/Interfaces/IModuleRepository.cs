@@ -7,11 +7,11 @@ namespace DAL.Interfaces.Interfaces
     public interface IModuleRepository
     {
         /// <summary>
-        /// Returns all modules of specified group
+        /// Returns collection of all modules of specified group
         /// </summary>
         /// <param name="groupId"></param>
-        /// <returns></returns>
-        Task<IEnumerable<ModuleDto>> GetModuleDtosAsync(int groupId);
+        /// <returns>Collection of all modules of specified group</returns>
+        Task<IEnumerable<ModuleDto>> GetModulesAsync(int groupId);
         /// <summary>
         /// Returns module specified by id
         /// </summary>
@@ -21,7 +21,7 @@ namespace DAL.Interfaces.Interfaces
         /// Creates new module
         /// </summary>
         /// <param name="moduleDto">Module DTO</param>
-        Task<int> AddModuleAsync(int groupdId, ModuleDto moduleDto);
+        Task<int> AddModuleAsync(ModuleDto moduleDto);
         /// <summary>
         /// Updates information about existing module
         /// </summary>

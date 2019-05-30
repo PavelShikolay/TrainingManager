@@ -10,13 +10,13 @@ namespace DAL.Interfaces.Interfaces
         /// Returns a collection of all users 
         /// </summary>
         /// <param name="roleId">Role id</param>
-        /// <returns>collection of users with specified role</returns>
+        /// <returns>Collection of users with specified role</returns>
         Task<IEnumerable<UserDto>> GetUsersAsync();
         /// <summary>
         /// Returns a collection of users with specified role
         /// </summary>
         /// <param name="roleId">Role id</param>
-        /// <returns>collection of users with specified role</returns>
+        /// <returns>Collection of users with specified role</returns>
         Task<IEnumerable<UserDto>> GetUsersAsync(string role);
         /// <summary>
         /// Returns user entity using user id
